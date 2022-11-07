@@ -10,11 +10,11 @@ ___
 
 1. Open terminal `pip install -r requirements.txt`
 2. Run `main.py`
-Please note that we have tested the app in Window OS.
+3. Please note that we have tested the app in Window OS.
 
 ## Team
 * [Shazwan Bin Sharum Mizan](https://github.com/Shazwanx9) - Lead Developer
-* [Aisha Sakinah binti Saadon](https://github.com/) - Lead Designer 
+* [Aisha Sakinah binti Saadon](https://www.linkedin.com/in/aisha-sakinah/) - Lead Designer 
 * [Muhammad Naufal Adha Bin Mohd Nizahan](https://github.com/naufal2855) - Lead Orator
 
 ## DISCLAIMER!
