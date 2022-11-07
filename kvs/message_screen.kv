@@ -1,0 +1,72 @@
+
+<MessageHolder@MDBoxLayout>:
+    orientation: "vertical"
+    size_hint: 1, None
+    height: "67dp"
+    spacing: "10dp"
+
+    # custom
+    sender: "Betty McDonald"
+    messages: "Are you joining the Fit Community?"
+    display_picture: "assets/avatar/avatar1.webp"
+
+    MDBoxLayout:
+        DisplayPicture:
+            source: root.display_picture
+            pos_hint: {"center_y":.5}
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "10dp", "10dp"
+            MDLabel:
+                text: root.sender
+                font_family: "Lexend"
+                font_style: "H6"
+                font_size: "18sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+            MDLabel:
+                text: root.messages
+                font_family: "Lexend"
+                font_style: "Body1"
+                font_size: "15sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+
+    MDRelativeLayout:
+        size_hint: .99, None
+        height: "2dp"
+        md_bg_color: "#4599AB"
+        pos_hint: {"center_x":.5}
+
+
+<MessagePanel@MDList>:
+    size_hint: .95, None
+    height: self.minimum_height
+    pos_hint: {"center_x":.5}
+    MessageHolder:
+    MessageHolder:
+    MessageHolder:
+    MessageHolder:
+    MessageHolder:
+    MessageHolder:
+    MessageHolder:
+
+
+<MessageScreen@Screen>:
+    name: "message_screen"
+
+    MDScrollView:
+        scroll_timeout : 100
+        size_hint: 1, .8
+        pos_hint: {"center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "10dp"
+            spacing: "20dp"
+            size_hint: 1, None
+            height: self.minimum_height
+
+            MessagePanel:
+
+    TopBar:

@@ -1,0 +1,179 @@
+
+<StreakHolder@MDBoxLayout>:
+    orientation: "vertical"
+    size_hint: 1, None
+    height: "67dp"
+    spacing: "10dp"
+
+    # custom
+    username: "Betty McDonald"
+    cal_burn: "20,000 cal burned"
+    display_picture: "assets/avatar/avatar1.webp"
+
+    MDBoxLayout:
+        DisplayPicture:
+            source: root.display_picture
+            pos_hint: {"center_y":.5}
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "10dp", "10dp"
+            MDLabel:
+                text: root.username
+                font_family: "Lexend"
+                font_style: "H6"
+                font_size: "16sp"
+                theme_text_color: "Custom"
+                text_color: "#007CA4"
+            MDLabel:
+                text: root.cal_burn
+                font_family: "Lexend"
+                font_style: "Body1"
+                font_size: "12sp"
+                theme_text_color: "Custom"
+                text_color: "#007CA4"
+
+<StreakPanel@MDList>:
+    size_hint: .95, None
+    height: self.minimum_height
+    pos_hint: {"center_x":.5}
+    StreakHolder:
+    StreakHolder:
+    StreakHolder:
+    StreakHolder:
+    StreakHolder:
+    StreakHolder:
+    StreakHolder:
+    StreakHolder:
+    StreakHolder:
+
+<TopStreakCard@MDCard>:
+    size_hint: None, None
+    radius: "20dp"
+
+    # Custom
+    bg_image: "assets/sample_photo.jfif"
+    ranking: "1"
+    rank_name: "Edward Jr."
+    rank_record: "Day 438"
+    rank_cal_burn: "35,890 cal burned"
+
+    MDRelativeLayout:
+        ImagePlaceholder:
+            source: root.bg_image
+            radius: "20dp"
+        MDRelativeLayout:
+            pos_hint: {"center_x": .25, "center_y":.75}
+            md_bg_color: 0, 124/255, 164/255, .3
+            size_hint: None, None
+            size: "60dp", "60dp"
+            radius: 60
+            MDLabel:
+                text: root.ranking
+                size_hint: .77, None
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .5, "center_y":.5}
+                font_family: "Lexend"
+                font_style: "H6"
+                font_size: "48sp"
+                theme_text_color: "Custom"
+                text_color: "white"
+        MDRelativeLayout:
+            size_hint: None, None
+            size: "145dp", "80dp"
+            pos_hint: {"center_x": .48, "center_y": .25}
+            MDBoxLayout:
+                orientation: "vertical"
+                MDLabel:
+                    text: root.rank_name
+                    font_family: "Lexend"
+                    font_style: "H6"
+                    font_size: "20sp"
+                    theme_text_color: "Custom"
+                    text_color: "white"
+                HighlightLabel:
+                    text: root.rank_record
+                MDLabel:
+                    text: root.rank_cal_burn
+                    font_family: "Lexend"
+                    font_style: "Body1"
+                    font_size: "12sp"
+                    theme_text_color: "Custom"
+                    text_color: "white"
+###########################################################################################
+
+<StreakScreen@Screen>:
+    name: "streak_screen"
+    MDFloatLayout:
+        md_bg_color: "#EEF5F8"
+        MDRelativeLayout:
+            size_hint: 1, None
+            height: "230dp"
+            md_bg_color: theme_color
+            pos_hint: {"top":1}
+        MDRelativeLayout:
+            size_hint: 1, None
+            height: "240dp"
+            # md_bg_color: "red"
+            md_bg_color: "#EEF5F8"
+            pos_hint: {"top":.85}
+            radius: "100dp"
+
+    MDRelativeLayout:
+        size_hint: 1, None
+        height: "400dp"
+        pos_hint: {"center_y": .58}
+
+        TopStreakCard:
+            size: "180dp", "180dp"
+            pos_hint: {"center_x": .5, "center_y":.85}
+
+        TopStreakCard:
+            bg_image: "assets/avatar/avatar3.jpg"
+            ranking: "2"
+            rank_name: "Sara Tendulkar"
+            rank_record: "Day 418"
+            rank_cal_burn: "32,090 cal burned"
+            size: "160dp", "160dp"
+            pos_hint: {"center_x": .25, "center_y":.35}
+
+        TopStreakCard:
+            bg_image: "assets/avatar/avatar2.jpg"
+            ranking: "3"
+            rank_name: "Albert Gauss."
+            rank_record: "Day 200"
+            rank_cal_burn: "26,120 cal burned"
+            size: "160dp", "160dp"
+            pos_hint: {"center_x": .75, "center_y":.35}
+    
+        MDRelativeLayout:
+            size_hint: .9, None
+            height: "2dp"
+            md_bg_color: "#4599AB"
+            pos_hint: {"center_x": .5, "center_y":.1}
+
+    MDScrollView:
+        scroll_timeout : 100
+        size_hint: 1, .27
+        pos_hint: {"center_y": .22}
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "10dp"
+            spacing: "20dp"
+            size_hint: 1, None
+            height: self.minimum_height
+
+            StreakPanel:
+
+    MDFloatLayout:
+        MDLabel:
+            text: "Top Streaks"
+            size_hint: .77, None
+            pos_hint: {"center_x": .5, "center_y":.93}
+            font_family: "Lexend"
+            font_style: "H6"
+            font_size: "24sp"
+            theme_text_color: "Custom"
+            text_color: "white"
+
+    BottomBar:

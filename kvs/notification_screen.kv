@@ -1,0 +1,91 @@
+###########################################################################################
+
+<NotificationHolder@MDBoxLayout>:
+    size_hint: 1, None
+    height: "67dp"
+
+    # custom
+    activity: "KamalCham liked your workout."
+    time: "14 minutes ago"
+    display_picture: "assets/avatar/avatar2.jpg"
+
+    DisplayPicture:
+        source: root.display_picture
+        pos_hint: {"center_y":.5}
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "10dp", "20dp"
+        MDLabel:
+            text: root.activity
+            font_family: "Lexend"
+            font_style: "Body1"
+            font_size: "15sp"
+            theme_text_color: "Custom"
+            text_color: "black"
+        MDLabel:
+            text: root.time
+            font_family: "Lexend"
+            font_style: "Body1"
+            font_size: "13sp"
+            theme_text_color: "Custom"
+            text_color: "black"
+
+
+<NotificationPanel@MDBoxLayout>:
+    orientation: "vertical"
+    size_hint: 1, None
+    height: self.minimum_height
+    spacing: "10dp"
+
+    # Custom
+    title: "Today"
+
+    MDLabel:
+        text: root.title
+        font_family: "Lexend"
+        font_style: "Body1"
+        font_size: "20sp"
+        theme_text_color: "Custom"
+        text_color: "black"
+
+    MDList:
+        size_hint: .9, None
+        height: self.minimum_height
+        pos_hint: {"center_x":.5}
+        NotificationHolder:
+        NotificationHolder:
+        NotificationHolder:
+
+    MDRelativeLayout:
+        size_hint: .95, None
+        height: "2dp"
+        md_bg_color: "#4599AB"
+        pos_hint: {"center_x":.5}
+
+<NotificationScreen@Screen>:
+    name: "notification_screen"
+
+    MDScrollView:
+        scroll_timeout : 100
+        size_hint: 1, .8
+        pos_hint: {"center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "20dp"
+            spacing: "20dp"
+            size_hint: 1, None
+            height: self.minimum_height
+
+            NotificationPanel:
+                title: "Today"
+            NotificationPanel:
+                title: "Yesterday"
+            NotificationPanel:
+                title: "This Week"
+
+    TopBar:
+        left_icon: "assets/icon/favourite.png"
+        bar_title: "Notification"
+
+    BottomBar:

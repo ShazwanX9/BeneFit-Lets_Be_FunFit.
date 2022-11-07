@@ -1,0 +1,276 @@
+<UpdateCard@MDCard>:
+    md_bg_color: 0,0,0,0
+    size_hint: 1, None
+    height: "225dp"
+
+    # Custom
+    display_picture: "assets/sample_photo.jfif"
+    posted_image: "assets/sample_photo.jfif"
+    username: "Edward Jr."
+    workout_name: "Abs Workout"
+    rep_set: "30 reps per 10 sets"
+    cal_burn: "350 cal burned"
+    notice_caption: "[b]Edward Jr.[/b] updated his workout a few hours ago."
+
+    MDRelativeLayout: 
+        MDBoxLayout:
+            size_hint:1, None
+            height: "45dp"
+            spacing: "15dp"
+            pos_hint: {"center_x": .5, "center_y":.89}
+            DisplayPicture:
+                source: root.display_picture
+            MDLabel:
+                markup: True
+                text: root.notice_caption
+                size_hint: .77, 1
+                valign: "center"
+                font_family: "Lexend"
+                font_style: "Body2"
+                font_size: "15sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+
+        MDCard:
+            size_hint: 1, None
+            height: "165dp"
+            pos_hint: {"center_y": .4}
+
+            ImagePlaceholder:
+                source: root.posted_image
+                MDRelativeLayout:
+                    size_hint_max_x: "300dp"
+                    # Image:
+                    #     source: health_analytic
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        size_hint: None, None
+                        size: 265, 105
+                        spacing: "5dp"
+                        pos_hint: {"center_x": .5, "center_y": .45}
+
+                        MDLabel:
+                            text: root.username
+                            font_family: "Lexend"
+                            font_style: "Body1"
+                            font_size: "13sp"
+                            theme_text_color: "Custom"
+                            text_color: "white"
+                        MDLabel:
+                            text: root.workout_name
+                            font_family: "Lexend"
+                            font_style: "H6"
+                            font_size: "24sp"
+                            theme_text_color: "Custom"
+                            text_color: "white"
+                        MDLabel:
+                            text: root.rep_set
+                            font_family: "Lexend"
+                            font_style: "Body1"
+                            font_size: "16sp"
+                            theme_text_color: "Custom"
+                            text_color: "white"
+                        MDLabel:
+                            text: root.cal_burn
+                            font_family: "Lexend"
+                            font_style: "Body1"
+                            font_size: "16sp"
+                            theme_text_color: "Custom"
+                            text_color: "white"
+                        HighlightLabel:
+                            text: "On Streak"
+                            size: "100dp", "25dp"
+
+
+<StreakCard@MDCard>:
+    size_hint: None, None
+    width: 135
+    height: 135
+    radius: "15dp"
+
+    # Custom
+    streak_pic: "assets/sample_photo.jfif"
+    display_picture: "assets/sample_photo.jfif"
+    streak_count: "Day 438"
+    username: "Edward Jr."
+    cal_burn: "35,890 cal burned"
+
+    ImagePlaceholder:
+        source: root.streak_pic
+        MDRelativeLayout:
+            MDBoxLayout:
+                orientation: "vertical"
+                padding: "10dp"
+                DisplayPicture:
+                    source: root.display_picture
+                HighlightLabel:
+                    text: root.streak_count
+                    size: "75dp", "25dp"
+                MDLabel:
+                    text: root.username
+                    font_family: "Lexend"
+                    font_style: "Body1"
+                    font_size: "15sp"
+                    theme_text_color: "Custom"
+                    text_color: "white"
+                MDLabel:
+                    text: root.cal_burn
+                    font_family: "Lexend"
+                    font_style: "Body1"
+                    font_size: "12sp"
+                    theme_text_color: "Custom"
+                    text_color: "white"
+
+###########################################################################################
+
+<DailyUpdate@MDFloatLayout>:
+    MDLabel:
+        text: "Daily Updates"
+        size_hint: .77, None
+        pos_hint: {"center_x": .5, "center_y":.9}
+        font_family: "Lexend"
+        font_style: "H6"
+        font_size: "24sp"
+        theme_text_color: "Custom"
+        text_color: "#0A5B6C"
+
+    MDGridLayout:
+        cols: 1
+        size_hint: .8, .6
+        pos_hint: {"center_x": .5, "center_y":.55}
+        UpdateCard:
+            display_picture: "assets/avatar/avatar2.jpg"
+            posted_image: "assets/sample_photo.jfif"
+            username: "Edward Jr."
+            workout_name: "Abs Workout"
+            rep_set: "30 reps per 10 sets"
+            cal_burn: "350 cal burned"
+            notice_caption: "[b]Edward Jr.[/b] updated his workout a few hours ago."
+  
+        UpdateCard:
+            display_picture: "assets/avatar/avatar1.webp"
+            posted_image: "assets/images/images2.png"
+            username: "Betty McDonald"
+            workout_name: "Leg Workout"
+            rep_set: "10 reps per 3 sets"
+            cal_burn: "475 cal burned"
+            notice_caption: "[b]Betty McDonald[/b] updated his workout 15 hours ago."
+
+
+<TopStreak@MDFloatLayout>:
+    size_hint: 1, None
+    height: 150
+
+    MoreLabel:
+        size_hint: .9, 1
+        label_text: "Top Streaks"
+        pos_hint: {"center_x": .5, "center_y":.8}
+        fx: app.view_streak
+
+    MDScrollView:
+        size_hint: 1, None
+        height: "135dp"
+        scroll_timeout: 100
+        do_scroll_y: False
+        pos_hint: {"center_x": .5, "center_y":.2}
+        MDBoxLayout:
+            size_hint: None, 1
+            width: self.minimum_width
+            padding: "10dp", 0
+            spacing: "10dp"
+            StreakCard:
+                streak_pic: "assets/sample_photo.jfif"
+                display_picture: "assets/avatar/avatar2.jpg"
+                streak_count: "Day 438"
+                username: "Edward Jr."
+                cal_burn: "35,890 cal burned"
+            StreakCard:
+                streak_pic: "assets/images/images2.png"
+                display_picture: "assets/avatar/avatar1.webp"
+                streak_count: "Day 2"
+                username: "Betty McDonald"
+                cal_burn: "750 cal burned"
+            StreakCard:
+                streak_pic: "assets/images/images3.jpg"
+                display_picture: "assets/avatar/avatar2.jpg"
+                streak_count: "Day 437"
+                username: "Edward Jr."
+                cal_burn: "35,540 cal burned"
+            StreakCard:
+                streak_pic: "assets/images/images5.jpg"
+                display_picture: "assets/avatar/avatar1.webp"
+                streak_count: "Day 1"
+                username: "Betty McDonald"
+                cal_burn: "275 cal burned"
+            StreakCard:
+                streak_pic: "assets/images/images4.jpg"
+                display_picture: "assets/avatar/avatar2.jpg"
+                streak_count: "Day 436"
+                username: "Edward Jr."
+                cal_burn: "35,000 cal burned"
+
+###########################################################################################
+
+<HomeScreen@Screen>:
+    name: "home_screen"
+    MDFloatLayout:
+        md_bg_color: "#EEF5F8"
+        MDRelativeLayout:
+            size_hint: 1, None
+            height: "230dp"
+            md_bg_color: theme_color
+            pos_hint: {"top":1}
+        MDRelativeLayout:
+            size_hint: 1, None
+            height: "240dp"
+            # md_bg_color: "red"
+            md_bg_color: "#EEF5F8"
+            pos_hint: {"top":.85}
+            radius: "100dp"
+
+    MDScrollView:
+        # md_bg_color: "red"
+        scroll_timeout : 100
+        size_hint: 1, .7
+        pos_hint: {"center_y": .43}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: 1, None
+            height: self.minimum_height
+
+            TopStreak:
+            DailyUpdate:
+                size_hint: 1, None
+                height: "525dp"
+                
+    MDFloatLayout:
+        MDLabel:
+            text: "BeneFit"
+            size_hint: .77, None
+            pos_hint: {"center_x": .5, "center_y":.93}
+            font_family: "Lexend"
+            font_style: "H6"
+            font_size: "24sp"
+            theme_text_color: "Custom"
+            text_color: "white"
+        
+        MDBoxLayout:
+            size_hint: None, None
+            size: self.minimum_width, self.minimum_height
+            pos_hint: {"center_x": .78, "center_y":.93}
+            MDIconButton:
+                icon: "assets/icon/new_feed.png"
+                icon_size: "35sp"
+            MDIconButton:
+                icon: "assets/icon/view_chat.png"
+                icon_size: "35sp"
+                on_release: 
+                    app.root.current = "message_screen"
+                    app.root.transition.direction = "left"
+
+        UpcomingCard:
+            size_hint: .8, None
+            pos_hint: {"center_x": .5, "center_y": .83}
+
+    BottomBar:

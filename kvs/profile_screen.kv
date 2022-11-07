@@ -1,0 +1,118 @@
+<PersonalInfo@MDCard>: 
+    md_bg_color: "#F5F5F5"
+    size_hint: .8, None
+    height: "66dp"
+    padding: "45dp", "10dp"
+    DisplayPicture:
+        source: "assets/avatar/avatar3.jpg"
+    MDBoxLayout:
+        orientation: "vertical"
+        pos_hint: {"center_x": .5, "center_y":.35}
+        MDLabel:
+            text: "Sara Tendulkar"
+            font_family: "Lexend"
+            font_style: "Body1"
+            font_size: "18sp"
+            theme_text_color: "Custom"
+            text_color: "#191C32"
+            pos_hint: {"center_x": .58}
+
+        MDRectangleFlatIconButton:
+            text: "Sydney, Australia"
+            icon: "google-maps"
+            font_family: "Lexend"
+            font_style: "Body1"
+            font_size: "14sp"
+            theme_text_color: "Custom"
+            text_color: "#9CA3AE"
+            icon_color: "#C3CCD3"
+            line_color: 0,0,0,0
+
+<BasicData@MDBoxLayout>
+    orientation: "vertical"
+
+    #Custom
+    top_text:""
+    bottom_text: ""
+    MDLabel:
+        markup: True
+        text: root.top_text
+        font_family: "Lexend"
+        font_style: "Body1"
+        font_size: "14sp"
+        theme_text_color: "Custom"
+        text_color: "#9DACC1"
+        halign: "center"
+    MDLabel:
+        text: root.bottom_text
+        font_family: "Lexend"
+        font_style: "Body1"
+        font_size: "14sp"
+        theme_text_color: "Custom"
+        text_color: "#9DACC1"
+        halign: "center"
+
+<PersonalGain@MDCard>: 
+    size_hint: .8, None
+    height: "80dp"
+    padding: "20dp"
+
+    BasicData:
+        top_text: "[size=24][color=#191C32]75[/color][/size] kg"
+        bottom_text: "Weight"
+
+    BasicData:
+        top_text: "[size=24][color=#191C32]6.5[/color][/size] ft"
+        bottom_text: "Height"
+
+    BasicData:
+        top_text: "[size=24][color=#191C32]25[/color][/size] yrs"
+        bottom_text: "Age"
+
+<DataCard@FitImage>:
+    size_hint: None, None
+    size: "165dp", "165dp"
+
+<PersonalPerformance@MDGridLayout>
+    cols:2
+    spacing: "10dp"
+    padding: "10dp"
+    size_hint: None, None
+    size: "350dp", "350dp"
+
+    DataCard:
+        source: "assets/mock_data/data1.png"
+    DataCard:
+        source: "assets/mock_data/data2.png"
+    DataCard:
+        source: "assets/mock_data/data3.png"
+    DataCard:
+        source: "assets/mock_data/data4.png"
+
+<ProfileScreen@Screen>:
+    name: "profile_screen"
+
+    PersonalInfo:
+        pos_hint: {"center_x": .5, "center_y":.85}
+    PersonalGain:
+        pos_hint: {"center_x": .5, "center_y":.75}
+    PersonalPerformance:
+        pos_hint: {"center_x": .5, "center_y":.45}
+
+    MDLabel:
+        size_hint: .4, 1
+        text: "You have achieved 80% of your goal this month"
+        font_family: "Lexend"
+        font_style: "Body1"
+        font_size: "14sp"
+        theme_text_color: "Custom"
+        text_color: "#9DACC1"
+        halign: "center"
+
+        pos_hint: {"center_x": .5, "center_y":.15}
+
+    TopBar:
+        left_icon: "assets/icon/profile.png"
+        bar_title: "Profile"
+
+    BottomBar:

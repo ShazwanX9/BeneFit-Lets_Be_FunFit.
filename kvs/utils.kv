@@ -1,0 +1,234 @@
+<BottomBar@MDFloatLayout>:
+    size_hint: 1, None
+    height: "60dp"
+    md_bg_color: theme_color
+
+    MDRelativeLayout:
+        size_hint: None, None
+        size: "85dp", "85dp"
+        radius: "85dp"
+        md_bg_color: "white"
+        pos_hint: {"center_x": .5}
+
+    MDIconButton:
+        icon: "assets/icon/home.png"
+        icon_size: "45dp"
+        pos_hint: {"center_x": .15, "center_y": .5}
+        on_release:
+            app.root.transition.direction = "right"
+            app.root.current = "home_screen"
+
+    MDIconButton:
+        icon: "assets/icon/favourite.png"
+        icon_size: "45dp"
+        pos_hint: {"center_x": .3, "center_y": .5}
+        on_release:
+            app.root.transition.direction = "left" if app.root.current=="home_screen" else "right"
+            app.root.current = "notification_screen"
+
+
+    MDIconButton:
+        icon: "assets/icon/mid.png"
+        # size_hint: None, None
+        # size: "85dp", "85dp"
+        icon_size: "60dp"
+        pos_hint: {"center_x": .5, "center_y": .7}
+        on_release:
+            app.root.transition.direction = "left" if app.root.current in ("home_screen", "notification_screen") else "right"
+            app.root.current = "fitness_diary_screen"
+
+    MDIconButton:
+        icon: "assets/icon/social.png"
+        icon_size: "45dp"
+        pos_hint: {"center_x": .7, "center_y": .5}
+        on_release:
+            app.root.transition.direction = "right" if app.root.current=="profile_screen" else "left"
+            app.root.current = "community_screen"
+
+    MDIconButton:
+        icon: "assets/icon/profile.png"
+        icon_size: "45dp"
+        pos_hint: {"center_x": .85, "center_y": .5}
+        on_release:
+            app.root.transition.direction = "left"
+            app.root.current = "profile_screen"
+
+<TopBar@MDFloatLayout>:
+    left_icon: "chevron-left"
+    bar_title: "Messages"
+    MDBoxLayout:
+        md_bg_color: "#4599AB"
+        size_hint: 1, None
+        height: "70dp"
+        pos_hint: {"top":1}
+        MDIconButton:
+            icon: root.left_icon
+            icon_size: "30sp"
+            theme_text_color: "Custom"
+            text_color: "white"
+            pos_hint: {"center_x": .3, "center_y": .5}
+            on_release: 
+                app.root.current = "home_screen"
+                app.root.transition.direction = "right"
+        MDLabel:
+            text: root.bar_title
+            font_family: "Lexend"
+            font_style: "Body1"
+            font_size: "26sp"
+            theme_text_color: "Custom"
+            text_color: "white"
+
+<UpcomingCard@MDCard>
+    md_bg_color: "#FFFFFF"
+    height: "100dp"
+    elevation: 2
+    radius: 20
+    MDRelativeLayout:
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: .8, 1
+            x: "20dp"
+            padding: 0, "10dp"
+            # pos_hint: {"x": .1, "center_y": .9}
+            
+            MDLabel:
+                text: "Upcoming Activity"
+                font_family: "Lexend"
+                font_style: "Body2"
+                font_size: "18sp"
+                theme_text_color: "Custom"
+                text_color: "#005365"
+
+            MDLabel:
+                text: "Walking Lunges"
+                font_family: "Lexend"
+                font_style: "Body1"
+                font_size: "22sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+                # bold: True
+
+            MDLabel:
+                text: "Scheduled at 5.00pm"
+                font_family: "Lexend"
+                font_style: "Body2"
+                font_size: "14sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+
+    MDRelativeLayout:
+        size_hint: .5, 1
+        size_hint_max_x: "150dp"
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: "100dp", "33dp"
+            # size_hint: .9, .4
+            padding: "5dp"
+            pos_hint: {"center_y": .7}
+            MDLabel:
+                text: "Reminder in"
+                halign: "right"
+                font_family: "Lexend"
+                font_style: "Body2"
+                font_size: "12sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+            MDLabel:
+                text: "03:12:08"
+                halign: "right"
+                font_family: "Lexend"
+                font_style: "Body2"
+                font_size: "12sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+
+        MDRelativeLayout:
+            size_hint: None, None
+            size: "100dp", "33dp"
+            md_bg_color: theme_color
+            radius: "13dp"
+            pos_hint: {"center_y": .3}
+
+            MDFlatButton:
+                size_hint: 1, 1
+                text: "Start Now"
+                radius: 13, 13
+                font_family: "Lexend"
+                font_style: "Body2"
+                font_size: "15sp"
+                theme_text_color: "Custom"
+                text_color: "white"
+
+<DisplayPicture@FitImage>:
+    size_hint: None, None
+    size: "45dp", "45dp"
+    allow_stretch: True
+    keep_ratio: False
+    radius: 45, 45
+
+<HighlightLabel@MDRelativeLayout>:
+    text: ""
+    size_hint: None, None
+    size: "100dp", "25dp"
+    md_bg_color: "#B80B00"
+    radius: 20
+    MDLabel:
+        size_hint: 1, 1
+        halign: "center"
+        text: root.text
+        theme_text_color: "Custom"
+        text_color: "white"
+        # pos_hint: {"center_x": .5, "center_y": .5}
+
+<ImagePlaceholder@MDRelativeLayout>:
+    source:""
+    texture: Gradient.vertical(rgba(0,0,0,0), get_color_from_hex("050505"), get_color_from_hex("000000"))
+    FitImage:
+        source: root.source
+        radius: "15dp"
+    MDRelativeLayout:
+        canvas.before:
+            RoundedRectangle:
+                size: self.size
+                radius: [(15, 15), (15, 15), (15, 15), (15, 15)]
+                texture: root.texture
+
+<MoreLabel@MDBoxLayout>:
+    label_text: ""
+    size_hint: 1, None
+    height: self.minimum_height
+    fx: None
+    MDFlatButton:
+        size_hint: 1, 1
+        text: root.label_text
+        halign: "left"
+        valign: "center"
+        font_family: "Lexend"
+        font_style: "H6"
+        font_size: "22sp"
+        theme_text_color: "Custom"
+        text_color: "#0A5B6C"
+        on_release:
+            if root.fx:root.fx()
+
+    MDFlatButton:
+        size_hint: .1, 1
+        text: "More"
+        valign: "center"
+        font_family: "Lexend"
+        font_style: "Body1"
+        font_size: "16sp"
+        theme_text_color: "Custom"
+        text_color: "#4599AB"
+        on_release:
+            if root.fx:root.fx()
+
+    MDIconButton:
+        size_hint: .1, 1
+        icon: "chevron-right"
+        pos_hint: {"center_y":.5}
+        theme_icon_color: "Custom"
+        icon_color: "#4599AB"
+        on_release:
+            if root.fx:root.fx()

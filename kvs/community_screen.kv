@@ -1,0 +1,149 @@
+<DisplayCard@MDCard>:
+    size_hint: None, None
+    height: "70dp"
+    width: self.minimum_width+10
+    orientation: "vertical"
+    md_bg_color: 0, 0, 0 ,0
+
+    # Custom
+    source: ""
+    text: ""
+    DisplayPicture:
+        source: root.source
+        pos_hint: {"center_x": .5}
+    MDLabel:
+        text: root.text
+        halign: "center"
+        valign: "bottom"
+
+<DisplayCardScrollable@MDScrollView>:
+    scroll_timeout: 100
+    do_scroll_y: False
+    size_hint: 1, 1
+
+    MDBoxLayout:
+        size_hint: None, 1
+        spacing: "10dp"
+        padding: "10dp"
+        width: self.minimum_width
+        DisplayCard:
+            source: "assets/avatar/avatar2.jpg"
+            text: "Simon"
+        DisplayCard:
+            source: "assets/avatar/avatar1.webp"
+            text: "Betty"
+        DisplayCard:
+            source: "assets/avatar/avatar2.jpg"
+            text: "Charlie"
+        DisplayCard:
+            source: "assets/avatar/avatar1.webp"
+            text: "Cara"
+        DisplayCard:
+            source: "assets/sample_photo.jfif"
+            text: "Edward"
+        DisplayCard:
+            source: "assets/avatar/avatar2.jpg"
+            text: "Simon"
+        DisplayCard:
+            source: "assets/avatar/avatar2.jpg"
+            text: "Simon"
+        DisplayCard:
+            source: "assets/avatar/avatar2.jpg"
+            text: "Simon"
+
+<DisplayCardScrollableWithLabel@MDRelativeLayout>:
+    size_hint: 1, None
+    height: "100dp"
+
+    # Custom
+    label: ""
+
+    MDLabel:
+        text: root.label
+        font_family: "Lexend"
+        font_style: "Body1"
+        font_size: "16sp"
+        theme_text_color: "Custom"
+        text_color: "black"
+        pos_hint: {"center_x": .6, "center_y": .9}
+
+    DisplayCardScrollable:
+
+<GroupCard@MDCard>:
+    size_hint: .9, None
+    height: "350dp"
+    elevation: 3
+    pos_hint: {"center_x": .5}
+
+    MDRelativeLayout:
+        MDLabel:
+            text: "100 Days Weightlifting Programme"
+            font_family: "Lexend"
+            font_style: "H6"
+            font_size: "24sp"
+            theme_text_color: "Custom"
+            text_color: "black"
+            pos_hint: {"center_x": .6, "center_y": .8}
+
+        DisplayCardScrollableWithLabel:
+            label: "Instructor"
+            pos_hint: {"center_y": .55}
+
+        DisplayCardScrollableWithLabel:
+            label: "Members"
+            pos_hint: {"center_y": .25}
+
+<CategoryCard@MDCard>:
+    size_hint: 1, None
+    height: "125dp"
+    radius: "15dp"
+    elevation: 3
+
+    # Custom
+    source: "assets/community/community1.png"
+    category: "RECIPE"
+
+    MDRelativeLayout:
+        ImagePlaceholder:
+            source: root.source
+            texture: Gradient.vertical(rgba(0,0,0,0), get_color_from_hex("050505"), rgba(0,0,0,0))
+        MDRelativeLayout:
+            MDLabel:
+                text: root.category
+                font_family: "Lexend"
+                font_style: "H6"
+                font_size: "24sp"
+                theme_text_color: "Custom"
+                text_color: "white"
+                halign: "center"
+                valign: "center"
+
+<CommunityScreen@Screen>:
+    name: "community_screen"
+    MDScrollView:
+        scroll_timeout : 100
+        size_hint: 1, .7
+        pos_hint: {"center_y": .53}
+
+        MDBoxLayout:
+            size_hint: 1, None
+            spacing: "20dp"
+            padding: "20dp"
+            height: self.minimum_height
+            pos_hint: {"center_x":.5, "center_y": .5}
+            orientation: "vertical"
+            CategoryCard:
+            CategoryCard:
+                source: "assets/community/community2.png"
+                category: "WORKOUT PLAN"
+            CategoryCard:
+                source: "assets/community/community3.png"
+                category: "COMMUNITY"
+
+            GroupCard:
+
+    TopBar:
+        left_icon: "assets/icon/social.png"
+        bar_title: "Community"
+
+    BottomBar:

@@ -1,0 +1,189 @@
+<MealCard@MDCard>:
+    size_hint: 1, None
+    height: "67dp"
+    elevation: 3
+    radius: "10dp"
+
+    # Custom
+    time: "Morning"
+    food: "Peanut Butter Toast"
+    cal: "135 cal"
+    
+    MDRelativeLayout:
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "15dp"
+            MDLabel:
+                text: root.time
+                font_family: "Lexend"
+                font_style: "Body1"
+                font_size: "16sp"
+                theme_text_color: "Custom"
+                text_color: "#0A5B6C"
+            MDLabel:
+                text: root.food
+                font_family: "Lexend"
+                font_style: "Body1"
+                font_size: "18sp"
+                theme_text_color: "Custom"
+                text_color: "black"
+        MDLabel:
+            text: root.cal
+            font_family: "Lexend"
+            font_style: "Body1"
+            font_size: "14sp"
+            theme_text_color: "Custom"
+            text_color: "#575757"
+            pos_hint: {"x": .8, "center_y": .3}
+
+
+<MealCardHolder@MDBoxLayout>:
+    orientation: "vertical"
+    size_hint: 1, None
+    height: self.minimum_height
+    spacing: "10dp"
+
+    MealCard:
+    MealCard:
+        time: "Lunch"
+        food: "Kale and Brussels Salad"
+        cal: "256 cal"
+    MealCard:
+        time: "Dinner"
+        food: "Chicken Aglio Olio"
+        cal: "107 cal"
+    MealCard:
+
+<DailyWorkoutCard@MDCard>:
+    size_hint: None, 1
+    width: 170
+    workout_name: "Push Ups"
+    cal_burn: "358 cal burn"
+    ImagePlaceholder:
+        source: "assets/sample_photo.jfif"
+        MDRelativeLayout:
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint: None, None
+                size: 265, 105
+                spacing: "5dp"
+                padding: "15dp"
+                pos_hint: {"center_y": .55}
+
+                HighlightLabel:
+                    text: "Day 15"
+                    size: "100dp", "25dp"
+                MDLabel:
+                    text: root.workout_name
+                    font_family: "Lexend"
+                    font_style: "H6"
+                    font_size: "22sp"
+                    theme_text_color: "Custom"
+                    text_color: "white"
+                MDLabel:
+                    text: root.cal_burn
+                    font_family: "Lexend"
+                    font_style: "Body1"
+                    font_size: "16sp"
+                    theme_text_color: "Custom"
+                    text_color: "white"
+
+<DailyWorkout@MDScrollView>:
+    scroll_timeout: 100
+    do_scroll_y: False
+    size_hint: 1, None
+    height: "270dp"
+
+    MDGridLayout:
+        rows: 2
+        size_hint: None, None
+        height: "270dp"
+        width: self.minimum_width
+        spacing: "10dp"
+        DailyWorkoutCard:
+        DailyWorkoutCard:
+        DailyWorkoutCard:
+        DailyWorkoutCard:
+        DailyWorkoutCard:
+        DailyWorkoutCard:
+
+###########################################################################################
+
+<FitnessDiaryScreen@Screen>:
+    name: "fitness_diary_screen"
+    MDFloatLayout:
+        md_bg_color: "#EEF5F8"
+        MDRelativeLayout:
+            size_hint: 1, None
+            height: "142dp"
+            md_bg_color: theme_color
+            radius: 0, 0, 27, 27
+            pos_hint: {"top":1}
+
+    MDScrollView:
+        scroll_timeout : 100
+        size_hint: 1, .7
+        pos_hint: {"center_y": .43}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "20dp"
+            spacing: "20dp"
+            size_hint: 1, None
+            height: self.minimum_height
+
+            MoreLabel:
+                label_text: "Daily Workout"
+            DailyWorkout:
+
+            MoreLabel:
+                label_text: "Meal of the Day"
+            MealCardHolder:
+
+    UpcomingCard:
+        size_hint: .8, None
+        pos_hint: {"center_x": .5, "center_y": .83}
+
+    MDFloatLayout:
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint: None, None
+            size: "180dp", "50dp"
+            pos_hint: {"center_x": .5, "center_y":.95}
+            MDBoxLayout:
+                MDIconButton:
+                    icon: "chevron-left"
+                    theme_icon_color: "Custom"
+                    icon_color: "white"
+                    pos_hint: {"center_y":.1}
+                MDLabel:
+                    text: "Today"
+                    font_family: "Lexend"
+                    font_style: "Body1"
+                    font_size: "24sp"
+                    theme_text_color: "Custom"
+                    text_color: "white"
+                    halign: "center"
+                    valign: "center"
+                MDIconButton:
+                    icon: "chevron-right"
+                    theme_icon_color: "Custom"
+                    icon_color: "white"
+                    pos_hint: {"center_y":.1}
+            
+            MDLabel:
+                text: "3 Nov 2022"
+                font_family: "Lexend"
+                font_style: "Body1"
+                font_size: "16sp"
+                theme_text_color: "Custom"
+                text_color: "white"
+                halign: "center"
+                valign: "center"
+
+        MDIconButton:
+            icon: "assets/icon/calendar.png"
+            icon_size: "50sp"
+            pos_hint: {"center_x": .9, "center_y":.94}
+
+    BottomBar:

@@ -1,0 +1,26 @@
+#:kivy 2.1.0
+#:set VERSION "v0.0.1"
+
+#:import Gradient main.Gradient
+#:import rgba kivy.utils.rgba
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+#:include kvs/utils.kv
+#:include kvs/home_screen.kv
+#:include kvs/streak_screen.kv
+#:include kvs/message_screen.kv
+#:include kvs/profile_screen.kv
+#:include kvs/community_screen.kv
+#:include kvs/notification_screen.kv
+#:include kvs/fitness_diary_screen.kv
+
+#:set theme_color "#4599AB"
+
+<Main@ScreenManager>:
+    HomeScreen:
+    StreakScreen:
+    MessageScreen:
+    ProfileScreen:
+    CommunityScreen:
+    NotificationScreen:
+    FitnessDiaryScreen:
